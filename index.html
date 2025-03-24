@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shakti: Women's Entrepreneurship Skills Platform</title>
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f7f7f7;
+        }
+        
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #8e44ad, #3498db);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .logo span {
+            color: #f8e9a1;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: url('/api/placeholder/1200/600') center/cover;
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #e74c3c;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-box {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-box i {
+            font-size: 40px;
+            color: #8e44ad;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .feature-box h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .feature-box p {
+            color: #666;
+        }
+        
+        /* Program Tracks */
+        .program-tracks {
+            padding: 80px 0;
+            background-color: #f7f7f7;
+        }
+        
+        .tracks-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .track-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .track-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .track-content {
+            padding: 25px;
+        }
+        
+        .track-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .track-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .track-card .btn {
+            padding: 8px 20px;
+            font-size: 14px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-box {
+            background-color: #f9f9f9;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .testimonial-text {
+            font-size: 18px;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .testimonial-text::before {
+            content: '"';
+            font-size: 60px;
+            color: #e0e0e0;
+            position: absolute;
+            top: -20px;
+            left: -20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        
+        .author-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: #666;
+        }
+        
+        /* Registration Form */
+        .registration {
+            padding: 80px 0;
+            background-color: #f7f7f7;
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #8e44ad;
+        }
+        
+        .submit-btn {
+            background-color: #8e44ad;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #7d3c98;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #8e44ad;
+        }
+        
+        .footer-column p {
+            margin-bottom: 15px;
+            color: #bbb;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-icons {
+            display: flex;
+            margin-top: 15px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: #8e44ad;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .feature-box {
+                padding: 20px;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Shakti<span>Rise</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#programs">Programs</a></li>
+                        <li><a href="#testimonials">Success Stories</a></li>
+                        <li><a href="#register">Register</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Empowering Women Entrepreneurs</h1>
+            <p>Gain essential entrepreneurial skills, transform your business ideas into thriving enterprises, and join a supportive community of women entrepreneurs.</p>
+            <a href="#register" class="btn">Join Our Program</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose ShaktiRise</h2>
+                <p>Our comprehensive program is designed to address the unique challenges faced by women entrepreneurs in rural and semi-urban areas.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-box">
+                    <i>📱</i>
+                    <h3>Mobile & Offline Access</h3>
+                    <p>Access training materials offline and through basic mobile phones, ensuring learning continues even with limited connectivity.</p>
+                </div>
+                <div class="feature-box">
+                    <i>👩‍🏫</i>
+                    <h3>Peer Mentorship</h3>
+                    <p>Connect with successful women entrepreneurs who will guide you through the challenges of starting and growing a business.</p>
+                </div>
+                <div class="feature-box">
+                    <i>🌐</i>
+                    <h3>Localized Content</h3>
+                    <p>Training modules available in regional languages with context-specific examples relevant to local markets.</p>
+                </div>
+                <div class="feature-box">
+                    <i>💼</i>
+                    <h3>Practical Application</h3>
+                    <p>Develop real business plans and financial models that you can immediately implement in your enterprise.</p>
+                </div>
+                <div class="feature-box">
+                    <i>🤝</i>
+                    <h3>Community Support</h3>
+                    <p>Join a network of women entrepreneurs for ongoing support, collaboration, and shared growth opportunities.</p>
+                </div>
+                <div class="feature-box">
+                    <i>📊</i>
+                    <h3>Market Linkages</h3>
+                    <p>Gain access to broader markets and e-commerce platforms through our established partnerships.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Tracks -->
+    <section id="programs" class="program-tracks">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Skill-Building Tracks</h2>
+                <p>Choose from our specialized tracks or enroll in the comprehensive program to master all aspects of entrepreneurship.</p>
+            </div>
+
+            <div class="tracks-container">
+                <div class="track-card">
+                    <div class="track-img" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="track-content">
+                        <h3>Business Planning & Management</h3>
+                        <p>Learn to develop comprehensive business plans, understand market research, and implement effective management strategies.</p>
+                        <a href="#register" class="btn">Explore Track</a>
+                    </div>
+                </div>
+                <div class="track-card">
+                    <div class="track-img" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="track-content">
+                        <h3>Financial Literacy & Management</h3>
+                        <p>Master financial planning, budgeting, accounting basics, and learn how to access loans and manage credit effectively.</p>
+                        <a href="#register" class="btn">Explore Track</a>
+                    </div>
+                </div>
+                <div class="track-card">
+                    <div class="track-img" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="track-content">
+                        <h3>Digital Marketing & E-commerce</h3>
+                        <p>Develop skills to market your business online, build a digital presence, and sell products through e-commerce platforms.</p>
+                        <a href="#register" class="btn">Explore Track</a>
+                    </div>
+                </div>
+                <div class="track-card">
+                    <div class="track-img" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="track-content">
+                        <h3>Leadership & Communication</h3>
+                        <p>Enhance your leadership abilities, build communication skills, and develop negotiation techniques to grow your business.</p>
+                        <a href="#register" class="btn">Explore Track</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Success Stories</h2>
+                <p>Hear from women who have transformed their businesses and lives through our program.</p>
+            </div>
+
+            <div class="testimonial-container">
+                <div class="testimonial-box">
+                    <div class="testimonial-text">
+                        "Before joining ShaktiRise, I was selling handmade products locally with minimal profit. After completing the digital marketing track, I now sell nationwide through an e-commerce platform and have tripled my monthly income."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="/api/placeholder/60/60" alt="Sangita" class="author-img">
+                        <div class="author-info">
+                            <h4>Sangita Devi</h4>
+                            <p>Handcraft Entrepreneur, Bihar</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-box">
+                    <div class="testimonial-text">
+                        "The financial management skills I learned helped me secure a loan to expand my dairy business. Now I employ five women from my village and have established a sustainable enterprise that supports my entire family."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="/api/placeholder/60/60" alt="Lakshmi" class="author-img">
+                        <div class="author-info">
+                            <h4>Lakshmi Patel</h4>
+                            <p>Dairy Business Owner, Gujarat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form -->
+    <section id="register" class="registration">
+        <div class="container">
+            <div class="section-title">
+                <h2>Join Our Program</h2>
+                <p>Fill out the form below to register for our upcoming skill-building program.</p>
+            </div>
+
+            <div class="form-container">
+                <form id="registration-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Mobile Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Village/Town</label>
+                        <input type="text" id="location" name="location" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="district">District</label>
+                        <input type="text" id="district" name="district" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <select id="state" name="state" required>
+                            <option value="">Select State</option>
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                            <option value="Bihar">Bihar</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                            <option value="West Bengal">West Bengal</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="business">Current Business/Business Idea</label>
+                        <textarea id="business" name="business" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="track">Preferred Training Track</label>
+                        <select id="track" name="track" required>
+                            <option value="">Select Track</option>
+                            <option value="comprehensive">Comprehensive Program (All Tracks)</option>
+                            <option value="business">Business Planning & Management</option>
+                            <option value="financial">Financial Literacy & Management</option>
+                            <option value="digital">Digital Marketing & E-commerce</option>
+                            <option value="leadership">Leadership & Communication</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="language">Preferred Language</label>
+                        <select id="language" name="language" required>
+                            <option value="">Select Language</option>
+                            <option value="Hindi">Hindi</option>
+                            <option value="Bengali">Bengali</option>
+                            <option value="Tamil">Tamil</option>
+                            <option value="Telugu">Telugu</option>
+                            <option value="Marathi">Marathi</option>
+                            <option value="Gujarati">Gujarati</option>
+                            <option value="English">English</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit Registration</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About ShaktiRise</h3>
+                    <p>ShaktiRise is dedicated to empowering women entrepreneurs through innovative skill-building programs designed to address the unique challenges faced by women in rural and semi-urban areas.</p>
+                    <div class="social-icons">
+                        <a href="#"><span>f</span></a>
+                        <a href="#"><span>t</span></a>
+                        <a href="#"><span>in</span></a>
+                        <a href="#"><span>ig</span></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#programs">Programs</a></li>
+                        <li><a href="#testimonials">Success Stories</a></li>
+                        <li><a href="#register">Register</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@shaktirise.org</p>
+                    <p>Phone: +91 98765 43210</p>
+                    <p>Address: 123 Community Center, New Delhi, India</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 ShaktiRise. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple form validation
+        document.getElementById('registration-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const business = document.getElementById('business').value;
+            
+            // Basic validation
+            if (name.length < 3) {
+                alert('Please enter your full name');
+                return false;
+            }
+            
+            if (phone.length < 10) {
+                alert('Please enter a valid phone number');
+                return false;
+            }
+            
+            if (business.length < 10) {
+                alert('Please provide more details about your business or business idea');
+                return false;
+            }
+            
+            // Form submission success
+            alert('Thank you for registering! Our team will contact you within 48 hours with further details.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
